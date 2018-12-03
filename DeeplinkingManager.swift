@@ -3,7 +3,6 @@
 //  DeepLinkingManager
 //
 //  Created by N.A Shashank on 29/11/18.
-//  Copyright © 2018 Razorpay. All rights reserved.
 //
 
 import UIKit
