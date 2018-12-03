@@ -3,7 +3,6 @@
 //  SampleAppCheckout
 //
 //  Created by N.A Shashank on 03/12/18.
-//  Copyright © 2018 Razorpay. All rights reserved.
 //
 
 import UIKit
