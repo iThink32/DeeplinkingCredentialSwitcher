@@ -30,7 +30,7 @@ handle the parsing.
 2) Now in your viewcontroller class if you want the key based on a deep link all you have to do is
 
 ```
-let key = DeeplinkingManager.retainedInstance.key()
+let key = DeeplinkingManager.retainedInstance.key(defaultValue: Credentials.debugKey.rawValue)
 ```
 
 and that's it.
