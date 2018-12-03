@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol DeeplinkCredentialManagerDelegate: class {
-    func failedToParseUrl(error:DeeplinkingError)
-}
-
 class DeeplinkCredentialManager:DeeplinkingManagerDelegate {
     
     private var customType:CustomType?
