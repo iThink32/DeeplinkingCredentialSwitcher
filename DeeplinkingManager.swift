@@ -21,8 +21,8 @@ class DeeplinkingManager:DeeplinkCredentialManagerDelegate {
         self.deeplinkingCredentialsManager.handleSchemeWith(host: url.host, path: url.path, options: options)
     }
     
-    func key() -> String {
-        return self.deeplinkingCredentialsManager.valueFrom(keyPath: \DeeplinkCredentialManager.key, defaultValue: String())
+    func key(defaultValue:String) -> String {
+        return self.deeplinkingCredentialsManager.valueFrom(keyPath: \DeeplinkCredentialManager.key, defaultValue: defaultValue)
     }
     
     func failedToParseUrl(error: DeeplinkingError) {
