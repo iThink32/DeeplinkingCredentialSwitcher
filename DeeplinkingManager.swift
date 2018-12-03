@@ -6,27 +6,7 @@
 //
 
 import UIKit
-
-protocol DeeplinkingManagerDelegate:class {
-//    func isValid(scheme:String?) -> Bool
-    func handleSchemeWith(host:String?,path:String?,options:[UIApplication.OpenURLOptionsKey : Any])
-    //func failedToParseDeeplink(error:ErrorDescribable)
-}
-
-public protocol ErrorDescribable:Error {
-    var localizedDescription:String {get}
-}
-
-
-enum DeeplinkingError:ErrorDescribable {
-    case failedToParseDeeplink
     
-    var localizedDescription: String {
-        return "\(self)"
-    }
-}
-    
-
 class DeeplinkingManager:DeeplinkCredentialManagerDelegate {
     
     static let retainedInstance = DeeplinkingManager()
