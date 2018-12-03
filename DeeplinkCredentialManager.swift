@@ -3,7 +3,6 @@
 //  DeepLinkingManager
 //
 //  Created by N.A Shashank on 29/11/18.
-//  Copyright © 2018 Razorpay. All rights reserved.
 //
 
 import UIKit
@@ -14,16 +13,16 @@ protocol DeeplinkCredentialManagerDelegate: class {
 
 class DeeplinkCredentialManager:DeeplinkingManagerDelegate {
     
-    private var razorpayType:RazorpayType?
+    private var customType:CustomType?
     var key:String?
     
     weak var delegate:DeeplinkCredentialManagerDelegate?
     
-    enum RazorpayType {
+    enum CustomType {
         case checkout(Mode)
         case customui(Mode)
         
-        static func instanceFrom(host:String,path:String) -> RazorpayType {
+        static func instanceFrom(host:String,path:String) -> CustomType {
             // since checkout and custom ui are using the same keys there is a common mode but in future
             // if it splits change it here
             var mode:Mode
@@ -38,17 +37,17 @@ class DeeplinkCredentialManager:DeeplinkingManagerDelegate {
                 mode = DeeplinkCredentialManager.Mode.custom(path)
             }
             guard host.lowercased() == "checkout" else{
-                return RazorpayType.customui(mode)
+                return CustomType.customui(mode)
             }
-            return RazorpayType.checkout(mode)
+            return CustomType.checkout(mode)
         }
         
         var key:String {
             var strTemp = String()
             switch self {
-            case RazorpayType.checkout(let mode) :
+            case CustomType.checkout(let mode) :
                 strTemp = mode.key
-            case RazorpayType.customui(let mode) :
+            case CustomType.customui(let mode) :
                 strTemp = mode.key
             }
             return strTemp
@@ -93,8 +92,8 @@ class DeeplinkCredentialManager:DeeplinkingManagerDelegate {
             self.delegate?.failedToParseUrl(error: DeeplinkingError.failedToParseDeeplink)
             return
         }
-        let type = RazorpayType.instanceFrom(host: unwrappedHost, path: unwrappedPath)
-        self.razorpayType = type
+        let type = CustomType.instanceFrom(host: unwrappedHost, path: unwrappedPath)
+        self.customType = type
         self.key = type.key
     }
     
