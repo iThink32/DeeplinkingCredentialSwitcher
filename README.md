@@ -18,7 +18,7 @@ Now that you have a heads up lets get straight to the implementation.
 
 1) Add the above files to your project and in your app delegate add the following to your openURL function :
 
-```
+```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         DeeplinkingManager.retainedInstance.parseDeeplink(url: url, options: options)
         return true
@@ -29,7 +29,7 @@ handle the parsing.
 
 2) Now in your viewcontroller class if you want the key based on a deep link all you have to do is
 
-```
+```swift
 let key = DeeplinkingManager.retainedInstance.key(defaultValue: Credentials.debugKey.rawValue)
 ```
 
@@ -42,7 +42,7 @@ and partner keys.You can change the structure based on your requirement.
 
 the main func that you should focus on is 
 
-```
+```swift
     func valueFrom<ReturnType,Type>(keyPath:KeyPath<DeeplinkCredentialManager,Type>,defaultValue:ReturnType) -> ReturnType {
         let value = self[keyPath:keyPath]
         
@@ -59,6 +59,6 @@ unwrapped value if the value returned is an optional.
 
 You can use it like this 
 
-```
+```swift
 DeeplinkingCredentialsManager().valueFrom(keyPath: \DeeplinkCredentialManager.key, defaultValue: String())
 ```
